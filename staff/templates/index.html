@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="plat" placeholder="plat kendaraan"/>
+        <input type="number" name="type" placeholder="jumlah roda" value="2"/>
+        <button type="submit">Add</button>
+    </form>
+    <div>
+        <table>
+        <tr>
+            <th>name</th>
+            <th>action</th>
+        </tr>
+        {% for d in list_vehicle %}
+        <tr>
+            <td>{{ d.name }}</td>
+            <td>
+                <a href="delete/{{ d.pk }}">Out</a> 
+            </td>
+        </tr>
+        {% endfor %}    
+        </table>
+        
+    </div>
+</body>
+</html>
