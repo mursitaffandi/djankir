@@ -36,7 +36,7 @@
         function outConfirmation(id) {
             let isBoss = confirm("Kendaraan dgn Id " + id + " membayar Rp ");
             if(isBoss)
-            $.get("/", {outId: id}, function(result){});
+            $.post("exit", {outId: id}, function(result){});
         }
     </script>
 </body>
