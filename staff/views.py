@@ -9,7 +9,7 @@ def index(req):
         plat = req.POST['plat']
         wheel = req.POST['type']
         models.vehicle.objects.create(vehicle_name = plat, vehicle_wheels = wheel)
-
+        
     dataFetch = models.vehicle.objects.all()
     return render(req, 'index.html', {
 		'list_vehicle' : dataFetch,
@@ -20,16 +20,6 @@ def exit(req):
         id = req.POST['outId']
         models.vehicle.objects.filter(pk=id).delete()
 
-    dataFetch = serializers.serialize('json', models.vehicle.objects.all().values())
-    data = {'status': 200, 'message' : 'success', 'data' : dataFetch}
-    return JsonResponse(data)
-
-def enter(req):
-    if 'plat' in req.POST and 'type' in req.POST:
-        plat = req.POST['plat']
-        wheel = req.POST['type']
-        models.vehicle.objects.create(vehicle_name = plat, vehicle_wheels = wheel)
-    
-    dataFetch = serializers.serialize('json', models.vehicle.objects.all().values())
+    dataFetch = serializers.serialize('json', models.vehicle.objects.all())
     data = {'status': 200, 'message' : 'success', 'data' : dataFetch}
     return JsonResponse(data)
