@@ -17,12 +17,14 @@
         <tr>
             <th>plat</th>
             <th>jumlah roda</th>
+            <th>Masuk Pada</th>
             <th></th>
         </tr>
         {% for d in list_vehicle %}
         <tr>
             <td>{{ d.vehicle_name }}</td>
             <td>{{ d.vehicle_wheels }}</td>
+            <td>{{ d.created_at }}</td>
             <td>
                 <button onclick="outConfirmation({{d.pk}})">Out</button>
                  <!--'{{ d.pk }}-{{ d.vehicle_name }}-{{ d.vehicle_wheels }}'  -->
@@ -33,7 +35,7 @@
         
     </div>
     <script>
-        function getCookie(name) {
+    function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             var cookies = document.cookie.split(';');
@@ -66,7 +68,7 @@
         let isBoss = confirm("Kendaraan dgn Id " + id + " membayar Rp ");
             if(isBoss)
             $.post("exit", {outId: id}, function(result){
-                
+                console.log(result)
             });
         }
     </script>
